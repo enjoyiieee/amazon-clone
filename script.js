@@ -1,0 +1,61 @@
+const imgs = document.querySelectorAll('.header-slider ul img');
+const prev_btn = document.querySelector('.control_prev');
+const next_btn = document.querySelector('.control_next');
+
+let n = 0;   // It Means We are on the First Image.
+
+function changeSlide(){
+    for (let i = 0; i < imgs.length; i++) {
+        imgs[i].style.display  = 'none'    
+    }
+     imgs[n].style.display  = 'block';
+}
+changeSlide();
+
+prev_btn.addEventListener('click',(e)=>{
+    if (n > 0){
+         n--;
+    }else{
+      n = imgs.length - 1
+    }
+
+   changeSlide();
+})
+
+next_btn.addEventListener('click',(e)=>{
+    if (n < imgs.length - 1){
+         n++;
+    }else{
+      n = 0;
+    }
+   changeSlide();
+})
+
+
+// Now We Will Use Only Mouse Wheel to Scroll Product Slider
+
+const scrollContainer = document.querySelectorAll('.products');
+for (const item of scrollContainer){
+    item.addEventListener('wheel', (evt)=>{
+      evt.preventDefault(); // First We Have To Remove Deafult Feature Of Loading Page   // yahan Vertical Scroll (uupar-neeche) ko rokne ke liye lagaya gaya hai.
+      item.scrollLeft += evt.deltaY;
+    });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
